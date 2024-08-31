@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="icon.png" rel="icon">
+    <link href="style.css" rel="stylesheet">
+    <title>Showing results for contents of text-input area - Nu Html Checker</title>
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+    <div id="banner">
+        <h1 id="title"><a href="."><span>Nu Html Checker</span></a></h1></div>
+    <p class="disclaimer">This tool is an ongoing experiment in better HTML checking, and its behavior remains subject to change</p>
+    <h2 id="top">Showing results for contents of text-input area</h2>
+    <form method="get">
+        <fieldset>
+            <legend>Checker Input</legend>
+            <p class="checkboxes">Show <span class="checkboxgroup"><label title="Display the markup source of the input document." for="showsource"><input type="checkbox" name="showsource" id="showsource" value="yes" checked="checked">source</label><label title="Display an outline of the input document." for="showoutline"><input type="checkbox" name="showoutline" id="showoutline" value="yes">outline</label><label title="Display a report about the textual alternatives for images." for="showimagereport"><input type="checkbox" name="showimagereport" id="showimagereport" value="yes">image report</label></span>
+                <input id="show_options" type="button" value="Options…"><span class="extraoptions hidden"><span class="checkboxgroup"><label title="Check the content of all responses, including (non-200) error responses"><input type="checkbox" name="checkerrorpages" id="checkerrorpages" value="yes">check error pages</label></span>
+                <label id="user-agent-label" title="Specify the user-agent string to send in the document request">User-Agent
+                    <input name="useragent" list="useragents" value="Validator.nu/LV http://validator.w3.org/services">
+                </label>
+                <datalist id="useragents"></datalist>
+                <label id="accept-language-label" title="Specify the accept-language header to send in the document request">Accept-Language
+                    <input id="acceptlanguage" name="acceptlanguage">
+                </label>
+                </span>
+            </p>
+            <div id="inputregion">
+                <label id="inputlabel" for="doc">Document URL:</label>
+                <input type="url" name="doc" id="doc" pattern="(?:(?:https?://.+)|(?:data:.+))?" title="Absolute URL (http, https or data only) of the document to be checked." tabindex="0" autofocus="autofocus" class="textarea">
+            </div>
+            <p>
+                <input value="Check" type="submit" id="submit">
+            </p>
+        </fieldset>
+    </form>
+    <script src="script.js"></script>
+    <div id="results">
+        <ol>
+            <li class="error">
+                <p><strong>Error</strong>: <span>Stray end tag <code>a</code>.</span></p>
+                <p class="location"><a href="#l17c8">From line <span class="first-line">17</span>, column <span class="first-col">5</span>; to line <span class="last-line">17</span>, column <span class="last-col">8</span></a></p>
+                <p class="extract"><code>ody&gt;<span class="lf" title="Line break">↩</span><span class="lf" title="Line break">↩</span>	&lt;p&gt;<b>&lt;/a&gt;</b><span class="lf" title="Line break">↩</span>	&lt;div</code></p>
+            </li>
+            <li class="error">
+                <p><strong>Error</strong>: <span>No <code>p</code> element in scope but a <code>p</code> end tag seen.</span></p>
+                <p class="location"><a href="#l18c10">From line <span class="first-line">18</span>, column <span class="first-col">7</span>; to line <span class="last-line">18</span>, column <span class="last-col">10</span></a></p>
+                <p class="extract"><code>/a&gt;<span class="lf" title="Line break">↩</span>	&lt;div&gt;<b>&lt;/p&gt;</b><span class="lf" title="Line break">↩</span><span class="lf" title="Line break">↩</span>&lt;/bo</code></p>
+            </li>
+            <li class="error">
+                <p><strong>Error</strong>: <span>End tag for  <code>body</code> seen, but there were unclosed elements.</span></p>
+                <p class="location"><a href="#l20c7">From line <span class="first-line">20</span>, column <span class="first-col">1</span>; to line <span class="last-line">20</span>, column <span class="last-col">7</span></a></p>
+                <p class="extract"><code>div&gt;&lt;/p&gt;<span class="lf" title="Line break">↩</span><span class="lf" title="Line break">↩</span><b>&lt;/body&gt;</b><span class="lf" title="Line break">↩</span>&lt;/htm</code></p>
+            </li>
+            <li class="error">
+                <p><strong>Error</strong>: <span>Unclosed element <code>div</code>.</span></p>
+                <p class="location"><a href="#l18c6">From line <span class="first-line">18</span>, column <span class="first-col">2</span>; to line <span class="last-line">18</span>, column <span class="last-col">6</span></a></p>
+                <p class="extract"><code>	&lt;p&gt;&lt;/a&gt;<span class="lf" title="Line break">↩</span>	<b>&lt;div&gt;</b>&lt;/p&gt;<span class="lf" title="Line break">↩</span><span class="lf" title="Line break">↩</span></code></p>
+            </li>
+        </ol>
+        <p class="failure">There were errors.</p>
+        <h2 id="source">Source</h2>
+        <ol class="source">
+            <li id="l1"><code>&lt;!DOCTYPE html&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l2"><code>&lt;html&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l3"><code>&lt;head&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l4"><code>&lt;meta charset="utf-8"&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l5"><code>&lt;title&gt;Title&lt;/title&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l6"><code>&lt;meta name="keywords" content=""&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l7"><code>&lt;meta name="description" content=""&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l8"><code>&lt;meta http-equiv="refresh" content="10000"&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l9"><code>&lt;style type="text/css"&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l10"><code></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l11"><code></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l12"><code></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l13"><code>&lt;/style&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l14"><code>&lt;/head&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l15"><code>&lt;body&gt;</code><code class="lf" title="Line break">↩</code></li>
+            <li id="l16"><code></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l17"><code>	&lt;p&gt;<b id="l17c8" class="l17c8">&lt;/a&gt;</b></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l18"><code>	<b id="l18c6" class="l18c6">&lt;div&gt;</b><b id="l18c10" class="l18c10">&lt;/p&gt;</b></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l19"><code></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l20"><code><b id="l20c7" class="l20c7">&lt;/body&gt;</b></code><code class="lf" title="Line break">↩</code></li>
+            <li id="l21"><code>&lt;/html&gt;</code></li>
+        </ol>
+        <div class="details">
+            <p class="msgschema">Used the schema for HTML with SVG 1.1, MathML 3.0, RDFa 1.1, and ITS 2.0 support.</p>
+            <p class="msgmediatype">Used the HTML parser.</div>
+        <p class="stats">Total execution time 3 milliseconds.</p>
+    </div>
+    <hr>
+    <div id="about">
+        <p><a href="about.html">About this checker</a> • <a href="about.html#issues">Report an issue</a> • <span class="version">Version: 17.9.13</span></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Rebuild Special Comments in All Files",
+            "type": "shell",
+            // `DOCUMENT_ROOT` cannot be altered.
+            "command": "DOC_ROOT=/opt/homebrew/var/www SERVER_NAME=localhost SERVER_PORT=80 php ${workspaceFolder}/scripts/rebuild-special-comments.php",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }, {
+            "label": "Rebuild Special Comments in File",
+            "type": "shell",
+            // `DOCUMENT_ROOT` cannot be altered.
+            "command": "DOC_ROOT=/opt/homebrew/var/www SERVER_NAME=localhost SERVER_PORT=80 php ${workspaceFolder}/scripts/rebuild-special-comments-file.php ${file}",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }, {
+            "label": "Restore Filesystem Bin",
+            "type": "shell",
+            "command": "./scripts/restore-test-filesystem-bin.sh",
+            "group": "test",
+            "presentation": {
+                "reveal": "never"
+            }
+        }, {
+            "label": "PHP-CS-Fixer fix",
+            "type": "shell",
+            "command": "composer fix",
+            "group": "test",
+            "presentation": {
+                "reveal": "always",
+                "panel": "new"
+            }
+        }
+    ]
+}

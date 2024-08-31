@@ -1,0 +1,7 @@
+.DS_Store
+/vendor/
+composer.lock
+/tmp/
+docs/bookmarks.md
+.php-cs-fixer.cache
+var/config.php

@@ -1,0 +1,14 @@
+{
+    "editor.insertSpaces": true,
+    "editor.tabSize": 4,
+    "files.trimTrailingWhitespace": true,
+    "files.eol": "\n",
+    "search.exclude": {
+        "vendor": true,
+        "tmp/bck": true,
+    },
+    "[php]": {
+        "files.insertFinalNewline": true
+    },
+    "php-cs-fixer.onsave": true
+}

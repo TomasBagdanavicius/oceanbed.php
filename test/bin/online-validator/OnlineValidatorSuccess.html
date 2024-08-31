@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="icon.png" rel="icon">
+    <link href="style.css" rel="stylesheet">
+    <title>(X)HTML5 validation results</title>
+    <meta name="robots" content="noindex,nofollow">
+</head>
+
+<body>
+    <h1>(X)HTML5 validation results</h1>
+    <form method="get" class="simple">
+        <fieldset>
+            <legend>Validator Input</legend>
+            <table>
+                <tbody>
+                    <tr title="The document to validate.">
+                        <th>
+                            <label for="doc">Document</label>
+                        </th>
+                        <td>
+                            <input type="url" name="doc" id="doc" pattern="(?:(?:https?://.+)|(?:data:.+))?" title="Absolute IRI (http, https or data only) of the document to be checked." tabindex="0" autofocus="autofocus" class="textarea">
+                        </td>
+                    </tr>
+                    <tr title="Display a report about the textual alternatives for images.">
+                        <th></th>
+                        <td>
+                            <label for="showimagereport">
+                                <input type="checkbox" name="showimagereport" id="showimagereport" value="yes"> Show Image Report</label>
+                        </td>
+                    </tr>
+                    <tr title="Display the markup source of the input document.">
+                        <th></th>
+                        <td>
+                            <label for="showsource">
+                                <input type="checkbox" name="showsource" id="showsource" value="yes" checked="checked"> Show Source</label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <input value="Validate" type="submit" id="submit">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </fieldset>
+    </form>
+    <script src="script.js"></script>
+    <p class="success">The document is valid HTML5 + ARIA + SVG 1.1 + MathML 2.0 (subject to the utter previewness of this service).</p>
+    <h2 id="source">Source</h2>
+    <ol class="source">
+        <li id="l1"><code>&lt;!DOCTYPE html&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l2"><code>&lt;html&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l3"><code>&lt;head&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l4"><code>&lt;meta charset="utf-8"&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l5"><code>&lt;title&gt;Title&lt;/title&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l6"><code>&lt;meta name="keywords" content=""&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l7"><code>&lt;meta name="description" content=""&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l8"><code>&lt;meta http-equiv="refresh" content="10000"&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l9"><code>&lt;style type="text/css"&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l10"><code></code><code class="lf" title="Line break">↩</code></li>
+        <li id="l11"><code></code><code class="lf" title="Line break">↩</code></li>
+        <li id="l12"><code></code><code class="lf" title="Line break">↩</code></li>
+        <li id="l13"><code>&lt;/style&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l14"><code>&lt;/head&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l15"><code>&lt;body&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l16"><code></code><code class="lf" title="Line break">↩</code></li>
+        <li id="l17"><code>	</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l18"><code></code><code class="lf" title="Line break">↩</code></li>
+        <li id="l19"><code>&lt;/body&gt;</code><code class="lf" title="Line break">↩</code></li>
+        <li id="l20"><code>&lt;/html&gt;</code></li>
+    </ol>
+    <div class="details">
+        <p class="msgmediatype">Used the HTML parser.</div>
+    <p class="stats">Total execution time 2 milliseconds.</p>
+    <hr>
+    <p><a href="https://about.validator.nu/">About this Service</a> • <a href="//validator.nu/">More options</a></p>
+</body>
+
+</html>

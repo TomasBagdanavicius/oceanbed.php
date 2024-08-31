@@ -1,0 +1,26 @@
+{
+    "name": "lwis/oceanbed-php",
+    "description": "Simple PHP framework",
+    "type": "project",
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.63"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "LWIS Technologies"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "php": "^8.2"
+    },
+    "scripts": {
+        "fix": "vendor/bin/php-cs-fixer fix"
+    },
+    "autoload": {
+        "psr-4": {
+            "LWP\\": "src/"
+        }
+    }
+}

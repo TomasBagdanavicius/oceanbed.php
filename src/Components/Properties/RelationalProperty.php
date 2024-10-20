@@ -25,6 +25,7 @@ use LWP\Components\Properties\Enums\HookNamesEnum;
 use LWP\Components\Properties\Exceptions\PropertyStateException;
 use LWP\Components\Violations\Violation;
 use LWP\Components\Model\SharedAmounts\Exceptions\SharedAmountIdentifierNotFoundException;
+use LWP\Components\Properties\Exceptions\PropertyNotFoundException;
 
 class RelationalProperty extends EnhancedProperty
 {
@@ -398,22 +399,25 @@ class RelationalProperty extends EnhancedProperty
             $property_names,
         ): void {
 
-            $new_primary_property = $new_model->getPropertyByName($this->property_name);
-            $relation_class_name::removeAssociatedPrimaryPropertyCallbacks($new_primary_property);
-            $new_related_property_collection = $new_model->createNewPropertyCollectionBasedOn($relational_property_collection);
+            // In case property was removed from the new model
+            if ($new_model->getPropertyCollection()->containsKey($this->property_name)) {
 
-            foreach ($new_related_property_collection as $property) {
-                $relation_class_name::removeAssociatedRelatedPropertyCallbacks($property, $this);
+                $new_primary_property = $new_model->getPropertyByName($this->property_name);
+                $relation_class_name::removeAssociatedPrimaryPropertyCallbacks($new_primary_property);
+                $new_related_property_collection = $new_model->createNewPropertyCollectionBasedOn($relational_property_collection);
+
+                foreach ($new_related_property_collection as $property) {
+                    $relation_class_name::removeAssociatedRelatedPropertyCallbacks($property, $this);
+                }
+
+                /* Checks if the order of given properties matches the order in collection. Important is such relations as "join". */
+                if ($property_names !== $new_related_property_collection->getKeys()) {
+                    // Will rebuild collection by the order of given keys
+                    $new_related_property_collection = $new_related_property_collection->filterByKeys($property_names);
+                }
+
+                $build_relation_object_closure($new_primary_property, $new_related_property_collection);
             }
-
-            /* Checks if the order of given properties matches the order in collection. Important is such relations as "join". */
-            if ($property_names !== $new_related_property_collection->getKeys()) {
-                // Will rebuild collection by the order of given keys
-                $new_related_property_collection = $new_related_property_collection->filterByKeys($property_names);
-            }
-
-            $build_relation_object_closure($new_primary_property, $new_related_property_collection);
-
         });
 
         $pending_property_list = [];

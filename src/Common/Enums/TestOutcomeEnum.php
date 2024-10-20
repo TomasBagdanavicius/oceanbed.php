@@ -8,5 +8,4 @@ enum TestOutcomeEnum
 {
     case PASS;
     case FAIL;
-
 }

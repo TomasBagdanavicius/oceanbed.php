@@ -9,5 +9,4 @@ enum AccessModeEnum
     case READ;
     case WRITE;
     case READWRITE;
-
 }

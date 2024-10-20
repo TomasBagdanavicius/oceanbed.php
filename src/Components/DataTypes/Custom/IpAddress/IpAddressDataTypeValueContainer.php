@@ -46,6 +46,7 @@ class IpAddressDataTypeValueContainer extends CustomDataTypeValueContainer
     //
 
     public function getValue(): string // Defines the return data type.
-    {return $this->value;
+    {
+        return $this->value;
     }
 }

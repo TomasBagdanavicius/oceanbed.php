@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace LWP\Network\Http\Response\Formats;
 
 use LWP\Components\Template\TemplateInterface;
-use LWP\Network\Headers;
 use LWP\Components\Rules\SerializeFormattingRule;
+use LWP\Network\Headers;
 
 class Serialize extends ResponseFormat
 {

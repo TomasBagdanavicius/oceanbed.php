@@ -11,8 +11,8 @@ class InSetConstraintViolation extends InSetViolation implements ConstraintViola
 {
     public function __construct(
         protected InSetConstraintValidator $constraint_validator,
-        string|array $value,
-        string|array $missing_values,
+        string|int|array $value,
+        string|int|array $missing_values,
     ) {
 
         parent::__construct(

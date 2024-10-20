@@ -343,7 +343,7 @@ class Request implements RequestInterface
                     // Enables the progress meter for cURL transfers.
                     $this->curl_options->set(CURLOPT_NOPROGRESS, false);
 
-                    $this->curl_options->set(CURLOPT_PROGRESSFUNCTION, function (\CurlHandle $resource, int $download_size, int $downloaded, int $upload_size, int $uploaded) use ($value) {
+                    $this->curl_options->set(CURLOPT_PROGRESSFUNCTION, function (\CurlHandle $resource, int $download_size, int $downloaded, int $upload_size, int $uploaded) use ($value): int {
 
                         try {
 
@@ -496,7 +496,7 @@ class Request implements RequestInterface
     {
 
         if (in_array($name, self::getReservedCurlOptions())) {
-            throw new ReservedException("Curl option \"" . $name . "\" is reserved and cannot be set by user.");
+            throw new ReservedException(sprintf("Curl option %d is reserved and cannot be set by user.", $name));
         }
 
         return $this->curl_options->set($name, $value);

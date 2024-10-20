@@ -24,4 +24,7 @@ $string_trim_formatting_rule = new StringTrimFormattingRule($options);
 $formatter = $string_trim_formatting_rule->getFormatter();
 $formatted_string = $formatter->format("ABAB Hello World! ABAB");
 
-Demo\assert_true($formatted_string === " Hello World! ", "Unexpected result");
+Demo\assert_true(
+    $formatted_string === " Hello World! ",
+    "Unexpected result"
+);

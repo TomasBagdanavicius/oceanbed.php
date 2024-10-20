@@ -8,5 +8,4 @@ enum StatusEnum
 {
     case SUCCESS;
     case ERROR;
-
 }

@@ -22,7 +22,8 @@ class ArrayDataTypeValueContainer extends NaturalDataTypeValueContainer implemen
     // Defines custom return type for strictness.
 
     public function getValue(): array // Just for strictness.
-    {return $this->value;
+    {
+        return $this->value;
     }
 
 

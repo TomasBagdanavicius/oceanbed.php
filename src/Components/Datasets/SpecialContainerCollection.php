@@ -19,6 +19,7 @@ use LWP\Components\Properties\EnhancedProperty;
 use LWP\Common\Enums\NamedOperatorsEnum;
 use LWP\Components\Attributes\NoValueAttribute;
 use LWP\Common\Enums\AssortmentEnum;
+use LWP\Common\Enums\ReadWriteModeEnum;
 use LWP\Components\Definitions\Interfaces\WithDefinitionArrayInterface;
 use LWP\Components\Datasets\Interfaces\DatasetStoreFieldValueFormatterInterface;
 use LWP\Components\Datasets\Iterators\AbstractStoreFieldValueFormatterIterator;
@@ -320,12 +321,18 @@ class SpecialContainerCollection extends RepresentedClassObjectCollection implem
 
     // Gets a list of containers that are relational
 
-    public function getRelationshipContainers(array $exclude = [], bool $reuse = true): ?array
+    public function getRelationshipContainers(array $exclude = [], bool $reuse = true, ?ReadWriteModeEnum $dataset_association_type = null): ?array
     {
 
-        $condition = new Condition('relationship', new NoValueAttribute(), AssortmentEnum::INCLUDE);
+        $condition_group = new ConditionGroup();
+        $condition1 = new Condition('relationship', new NoValueAttribute(), AssortmentEnum::INCLUDE);
+        $condition_group->add($condition1);
 
-        return $this->getFilteredContainers($condition, $exclude, $reuse);
+        if ($dataset_association_type) {
+            $condition_group->add(new Condition('dataset_association_type', strtolower($dataset_association_type->name)));
+        }
+
+        return $this->getFilteredContainers($condition_group, $exclude, $reuse);
     }
 
 

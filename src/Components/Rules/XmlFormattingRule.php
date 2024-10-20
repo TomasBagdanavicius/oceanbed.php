@@ -20,7 +20,7 @@ class XmlFormattingRule extends FormattingRule
     {
 
         return [
-            'real_tagname_attr_name' => 'real_tag_name'
+            'real_tagname_attr_name' => 'real_tag_name',
         ];
     }
 
@@ -31,7 +31,7 @@ class XmlFormattingRule extends FormattingRule
     {
 
         return [
-            'real_tagname_attr_name'
+            'real_tagname_attr_name',
         ];
     }
 
@@ -47,8 +47,8 @@ class XmlFormattingRule extends FormattingRule
                 'min' => 1,
                 'max' => 100,
                 'allow_empty' => false,
-                'description' => ""
-            ]
+                'description' => "Specifies the name of the XML attribute that stores the original key when it contains special characters or exceeds length limits and cannot be used as XML tag name.",
+            ],
         ];
     }
 

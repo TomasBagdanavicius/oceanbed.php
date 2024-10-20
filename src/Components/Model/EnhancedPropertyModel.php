@@ -96,7 +96,7 @@ class EnhancedPropertyModel extends BasePropertyModel
         string $property_name,
         mixed $property_value,
         ValueOriginEnum $value_origin = ValueOriginEnum::MAIN,
-        array $options = []
+        array $options = [],
     ): mixed {
 
         $property_value = $this->fireOnBeforeSetValueCallbacks($property_value, [
@@ -104,7 +104,6 @@ class EnhancedPropertyModel extends BasePropertyModel
         ], $property_name);
 
         $property = $this->getPropertyByName($property_name);
-
         $this->adjustSetPropertyValueInternalOptions($options);
 
         try {

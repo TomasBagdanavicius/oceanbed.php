@@ -11,5 +11,4 @@ enum DefaultResponseFormatsEnum: string
     case SERIALIZE = 'serialize';
     case XML = 'xml';
     case HTMLJSON = 'htmljson';
-
 }

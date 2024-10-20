@@ -34,7 +34,7 @@ class ConcatFormattingRule extends FormattingRule
         return [
             'separator',
             'shrink',
-            'shrink_order'
+            'shrink_order',
         ];
     }
 
@@ -60,7 +60,7 @@ class ConcatFormattingRule extends FormattingRule
                 'type' => 'array',
                 'default' => false,
                 'description' => "Defines what order of elements should be used when concatenated result is being shrunk",
-            ]
+            ],
         ];
     }
 

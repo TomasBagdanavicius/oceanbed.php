@@ -8,5 +8,4 @@ enum AffixEnum
 {
     case PREFIX;
     case SUFFIX;
-
 }

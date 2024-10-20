@@ -20,7 +20,7 @@ $basic_sql_query_builder = (new BasicSqlQueryBuilder($sql_server))
     ->where("`table1`.`name` = ?", params: ['foo'])
     ->where("`table1`.`key` = ?", params: [1]);
 
-[$string, $params] = $basic_sql_query_builder->getFull();
+[$string] = $basic_sql_query_builder->getFull();
 
 Demo\assert_true(
     $string === "SELECT `column_name` FROM `table1` WHERE `table1`.`name` = ? AND `table1`.`key` = ?",

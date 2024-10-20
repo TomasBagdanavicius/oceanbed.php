@@ -9,5 +9,4 @@ enum ExtendedOrderEnum: string
     case ASC = "Ascending";
     case DESC = "Descending";
     case REL = "Relevance";
-
 }

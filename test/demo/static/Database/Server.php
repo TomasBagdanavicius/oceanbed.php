@@ -23,8 +23,5 @@ var_dump($sql_server->databaseExists('test'));
 echo "Database list: ";
 print_r($sql_server->getDatabaseList());
 
-#$sql_server->createDatabase('test_to_be_deleted');
-#$sql_server->dropDatabase('test_to_be_deleted');
-#$database = $sql_server->getDatabase('test');
-
-#var_dump( DatabaseServer::formatAsQuotedIdentifier('he.llo', first_dot_as_abbr_mark: true) );
+echo "Format quoted identifier: ";
+var_dump(SqlServer::formatAsQuotedIdentifier('he.llo', first_dot_as_abbr_mark: true));

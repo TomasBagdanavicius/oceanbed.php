@@ -11,8 +11,11 @@ Demo\start();
 
 require_once(Demo\SRC_PATH . '/Autoload.php');
 require_once(Demo\TEST_PATH . '/database-link-test.php');
+require_once(Demo\TEST_PATH . '/units/shared/utilities.php');
+
+$unexisting_database_name = generateUniqueDatabaseName($db_link);
 
 Demo\assert_true(
-    $sql_server->databaseExists('unexisting_database') === false,
+    $sql_server->databaseExists($unexisting_database_name) === false,
     "Database was found"
 );

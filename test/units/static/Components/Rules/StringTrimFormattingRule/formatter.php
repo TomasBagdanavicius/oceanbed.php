@@ -17,4 +17,7 @@ use LWP\Components\Rules\StringTrimFormatter;
 $string_trim_formatting_rule = new StringTrimFormattingRule();
 $formatter = $string_trim_formatting_rule->getFormatter();
 
-Demo\assert_true($formatter instanceof StringTrimFormatter, "Unexpected result");
+Demo\assert_true(
+    $formatter instanceof StringTrimFormatter,
+    "Unexpected result"
+);

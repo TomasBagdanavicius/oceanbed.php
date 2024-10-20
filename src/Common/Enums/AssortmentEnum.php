@@ -8,5 +8,4 @@ enum AssortmentEnum
 {
     case INCLUDE;
     case EXCLUDE;
-
 }

@@ -9,5 +9,4 @@ enum BracketsEnum
     case PARENTHESES;
     case SQUARE_BRACKETS;
     case CURLY_BRACKETS;
-
 }

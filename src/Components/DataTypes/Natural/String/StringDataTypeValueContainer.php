@@ -44,7 +44,8 @@ class StringDataTypeValueContainer extends NaturalDataTypeValueContainer impleme
     // Defines custom return type for strictness.
 
     public function getValue(): string // Just for strictness.
-    {return $this->value;
+    {
+        return $this->value;
     }
 
 

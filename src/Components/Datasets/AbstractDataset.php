@@ -25,6 +25,7 @@ use LWP\Components\Constraints\NotInDatasetConstraint;
 use LWP\Components\Attributes\NoValueAttribute;
 use LWP\Common\Enums\AssortmentEnum;
 use LWP\Common\Conditions\Enums\ConditionComparisonOperatorsEnum;
+use LWP\Common\Enums\AccessLevelsEnum;
 use LWP\Common\Enums\ReadWriteModeEnum;
 use LWP\Components\Violations\NotInSetViolation;
 use LWP\Common\Enums\ValidityEnum;
@@ -37,6 +38,8 @@ use LWP\Components\Datasets\Relationships\RelatedTypeEnum;
 use LWP\Components\Datasets\Container;
 use LWP\Components\Datasets\ExtrinsicContainer;
 use LWP\Components\Datasets\Exceptions\DatasetUpdateException;
+use LWP\Components\Properties\AbstractPropertyCollection;
+use LWP\Components\Properties\EnhancedPropertyCollection;
 use LWP\Components\Rules\TagnameFormattingRule;
 use LWP\Components\Rules\FormattingRuleCollection;
 
@@ -1453,7 +1456,7 @@ abstract class AbstractDataset implements WithDefinitionArrayInterface, Indexabl
     public function assignModelCallbacks(BasePropertyModel &$model): void
     {
 
-        $model->onFlushQueue(function (BasePropertyCollection $property_collection, BasePropertyModel $model): void {
+        $model->onFlushQueue(function (AbstractPropertyCollection $property_collection, BasePropertyModel $model): void {
 
             $primary_container_name = $this->getPrimaryContainerName();
 
@@ -1466,16 +1469,33 @@ abstract class AbstractDataset implements WithDefinitionArrayInterface, Indexabl
             }
 
             $update_data = [];
+            $update_data_private = [];
 
             foreach ($property_collection as $property_name => $property) {
-                $update_data[$property_name] = $property->getValue();
+
+                $is_private = false;
+                $is_own = in_array($property_name, $this->own_container_list);
+
+                if ($is_own) {
+                    $schema = $this->getOwnContainerSchema($property_name);
+                    if (isset($schema['set_access']) && $schema['set_access'] === 'private') {
+                        $is_private = true;
+                    }
+                }
+
+                if (!$is_private) {
+                    $update_data[$property_name] = $property->getValue();
+                } else {
+                    $update_data_private[$property_name] = $property->getValue();
+                }
             }
 
             $update_manager = $this->getStoreHandle()->getUpdateManager();
             $update_result = $update_manager->singleFromArray(
                 $primary_container_name,
                 $model->{$primary_container_name},
-                $update_data
+                $update_data,
+                $update_data_private
             );
 
             if ($update_result['status'] === 0) {

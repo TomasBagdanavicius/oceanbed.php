@@ -19,7 +19,7 @@ $basic_sql_query_builder = (new BasicSqlQueryBuilder($sql_server))
     ->from('table1')
     ->join("JOIN `table2` ON `table1`.`id` = `table2`.`id` AND `table2`.`name` = ? AND `table2`.`key` = ?", params: ['foo', 1]);
 
-[$string, $params] = $basic_sql_query_builder->getFull();
+[, $params] = $basic_sql_query_builder->getFull();
 
 Demo\assert_true(
     $params === [

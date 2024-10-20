@@ -106,3 +106,13 @@ function calculateAge(string $date_of_birth)
     $diff = date_diff(date_create($date_of_birth), date_create($current_date));
     return (int)$diff->format('%y');
 }
+
+function generateUniqueDatabaseName(mysqli $db_link, string $base_name = 'database'): string
+{
+    do {
+        // Since create/drop database command are not transactional, we have to rely on unique ID, which should be random enough in parallel calls
+        $database_name = $base_name . uniqid();
+        $result = $db_link->execute_query("SELECT `SCHEMA_NAME` FROM `INFORMATION_SCHEMA`.SCHEMATA WHERE `SCHEMA_NAME` = ? LIMIT 1", [$database_name]);
+    } while ($result->num_rows);
+    return $database_name;
+}

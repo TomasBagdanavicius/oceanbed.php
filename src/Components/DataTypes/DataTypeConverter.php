@@ -43,7 +43,7 @@ abstract class DataTypeConverter
     public static function addValidity(?DataTypeValueDescriptor $value_descriptor): DataTypeValueDescriptor
     {
 
-        /* Value has been successfully converted, so it means that it's valid. Apart from common logic, this is useful for another reason. When formatting rule is used, it will be taken into account inside value container, but this is not always desired when coming directly from convertion, eg. when convertion is utilized just to validate data type. */
+        /* Value has been successfully converted, so it means that it's valid. Apart from common logic, this is useful for another reason. When formatting rule is passed into `convert` method (eg. datetime, number types), it will be taken into account inside value container, but this is not always desired when coming directly from convertion, eg. when convertion is utilized just to validate data type. */
         if ($value_descriptor) {
             $value_descriptor->validity = ValidityEnum::VALID;
         } else {

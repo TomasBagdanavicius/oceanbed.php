@@ -8,5 +8,4 @@ enum NamedOperatorsEnum
 {
     case AND;
     case OR;
-
 }

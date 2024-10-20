@@ -8,5 +8,4 @@ enum StandardOrderEnum: string
 {
     case ASC = "Ascending";
     case DESC = "Descending";
-
 }

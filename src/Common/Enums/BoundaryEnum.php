@@ -8,5 +8,4 @@ enum BoundaryEnum
 {
     case START;
     case END;
-
 }

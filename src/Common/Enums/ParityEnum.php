@@ -8,5 +8,4 @@ enum ParityEnum
 {
     case ODD;
     case EVEN;
-
 }

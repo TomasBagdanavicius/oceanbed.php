@@ -20,7 +20,7 @@ class Database extends AbstractDatabase implements DatabaseInterface
 
     public function __construct(
         public readonly Server $server,
-        public readonly string $database_name
+        public readonly string $database_name,
     ) {
 
         $this->server_link = $server->link;
@@ -59,7 +59,7 @@ class Database extends AbstractDatabase implements DatabaseInterface
 
     public function supportsMultiQuery(): true
     {
-
+        // By default MySQL databases do support multi-queries.
         return true;
     }
 
@@ -110,7 +110,7 @@ class Database extends AbstractDatabase implements DatabaseInterface
     }
 
 
-    //
+    // Generates a unique abbreviation for a specified table name by comparing it against an existing collection of reserved abbreviations
 
     public function grantTableAbbreviation(string $table_name): string
     {
@@ -121,12 +121,15 @@ class Database extends AbstractDatabase implements DatabaseInterface
         do {
 
             if ($len < $table_name_len) {
+                // Takes first characters from table name
                 $abbreviation = substr($table_name, 0, $len);
                 $len++;
             } elseif ($len === $table_name_len) {
+                // Uses the full table name
                 $abbreviation = $table_name;
                 $len++;
             } else {
+                // Appends number to the table name
                 $abbreviation = ($table_name . $counter);
                 $counter++;
             }

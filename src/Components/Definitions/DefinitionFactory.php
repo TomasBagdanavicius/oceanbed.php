@@ -12,7 +12,7 @@ class DefinitionFactory
 
     public static function createNew(
         string $name,
-        string|int|float|array|bool|\Closure $value
+        string|int|float|array|bool|null|\Closure $value
     ): Definition {
 
         return new (self::getDefinitionClassName($name))($value);

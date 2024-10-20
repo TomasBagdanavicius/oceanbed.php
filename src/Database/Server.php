@@ -42,6 +42,7 @@ class Server
             ));
         }
 
+        $this->log("Connected to server");
         $this->setCharset($charset);
         $this->setTimezone($timezone);
     }
@@ -269,7 +270,7 @@ class Server
 
         if (!$this->databaseExists($database_name)) {
             throw new \Exception(
-                "Database \"$database_name\" does not exist and thus cannot be deleted."
+                "Database \"$database_name\" does not exist and thus cannot be deleted"
             );
         }
 
@@ -393,64 +394,5 @@ class Server
         }
 
         return $sql_str;
-    }
-
-
-    /* Legacy */
-
-    // Builds concatenated types string and a list of all variable parameters into a single array.
-
-    public static function buildStatementParams(array $params): array
-    {
-
-        $acronyms = [];
-
-        foreach ($params as $param) {
-
-            $is_blob = false;
-
-            if (is_array($param)) {
-
-                if (!empty($param['is_blob']) && !empty($param['param'])) {
-
-                    $param = $param['param'];
-                    $is_blob = $param['is_blob'];
-
-                } else {
-
-                    throw new \Exception("Parameter provided as array, but with a missing component.");
-                }
-            }
-
-            $acronyms[] = self::detectParamTypeAcronym($param, $is_blob);
-        }
-
-        array_unshift($params, implode($acronyms));
-
-        return $params;
-    }
-
-
-    // Detects one of the 4 variable parameter types and returns an acronym string of that type.
-    // $is_blob - since it's difficult to determinte if provided param is a blob, the user must verify this.
-
-    public static function detectParamTypeAcronym(mixed $param, bool $is_blob): string
-    {
-
-        if ($is_blob) {
-            return 'b';
-        } elseif (is_int($param)) {
-            return 'i';
-        } elseif (is_float($param)) {
-            return 'd';
-            // Null type values get passed as a strings.
-        } elseif (is_string($param) || is_null($param)) {
-            return 's';
-        } else {
-            throw new Exceptions\UnsupportedBindVariableType(sprintf(
-                "Unsupported bind variable type: %s",
-                gettype($param)
-            ));
-        }
     }
 }

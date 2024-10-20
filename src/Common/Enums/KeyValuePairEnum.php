@@ -8,5 +8,4 @@ enum KeyValuePairEnum
 {
     case KEY;
     case VALUE;
-
 }

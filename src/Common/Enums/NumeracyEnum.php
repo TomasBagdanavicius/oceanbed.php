@@ -8,5 +8,4 @@ enum NumeracyEnum: string
 {
     case SINGLE = "Single";
     case MULTIPLE = "Multiple";
-
 }

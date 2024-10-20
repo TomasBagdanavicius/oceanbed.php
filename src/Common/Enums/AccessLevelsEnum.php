@@ -8,5 +8,4 @@ enum AccessLevelsEnum
 {
     case PUBLIC;
     case PRIVATE;
-
 }

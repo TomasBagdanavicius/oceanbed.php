@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-include __DIR__ . '/../../../../../var/config.php';
+include __DIR__ . '/../../../../../../var/config.php';
 require_once $user_config['stonetable_path'] . '/src/web/demo-page-init.php';
 
 Demo\start();
@@ -18,11 +18,7 @@ $number_aggregator = new NumberAggregator();
 $number_aggregator->set(3);
 $number_aggregator->set(7.5);
 
-echo "Compound value: ";
-var_dump($number_aggregator->getCompound());
-
-echo "Times set count: ";
-var_dump($number_aggregator->getTimesSetCount());
-
-echo "Last set value: ";
-var_dump($number_aggregator->getLastSetValue());
+Demo\assert_true(
+    $number_aggregator->getCompound() === 10.5,
+    "Unexpected result"
+);

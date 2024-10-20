@@ -8,8 +8,8 @@ class InSetViolation extends Violation
 {
     public function __construct(
         private array $set,
-        string|array $value,
-        public readonly string|array $missing_values
+        string|int|array $value,
+        public readonly string|int|array $missing_values
     ) {
 
         /* Warning! There is no explicit validation here to verify that the provided value does not in fact intersect with the set. This issue is subject to the outside functionality, which must make sure that there is no hoax when calling this class. */
@@ -48,7 +48,7 @@ class InSetViolation extends Violation
 
     // Formats the missing values into a string, having all element individually quoted.
 
-    public static function getArrayValuesAsQuotedStrings(string|array $array, ?int $max = 5): string
+    public static function getArrayValuesAsQuotedStrings(string|int|array $array, ?int $max = 5): string
     {
 
         if (is_array($array)) {

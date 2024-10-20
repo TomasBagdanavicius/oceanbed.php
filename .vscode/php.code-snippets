@@ -56,7 +56,7 @@
             "",
             "/*** Demo Code ***/",
             "",
-            "require_once (Demo\\SRC_PATH . '/Autoload.php');",
+            "require_once(Demo\\SRC_PATH . '/Autoload.php');",
             "",
             "\\$expression = true;",
             "",

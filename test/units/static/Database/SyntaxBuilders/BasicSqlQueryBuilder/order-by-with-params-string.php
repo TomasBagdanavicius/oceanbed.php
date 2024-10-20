@@ -20,7 +20,7 @@ $basic_sql_query_builder = (new BasicSqlQueryBuilder($sql_server))
     ->from('table1')
     ->orderBy('CASE WHEN `column1` = ? THEN 1 WHEN `column1` = ? THEN 2 ELSE 3 END', StandardOrderEnum::DESC, params: ['foo', 1]);
 
-[$string, $params] = $basic_sql_query_builder->getFull();
+[$string] = $basic_sql_query_builder->getFull();
 
 Demo\assert_true(
     $string === "SELECT `column_name` FROM `table1` ORDER BY CASE WHEN `column1` = ? THEN 1 WHEN `column1` = ? THEN 2 ELSE 3 END DESC",

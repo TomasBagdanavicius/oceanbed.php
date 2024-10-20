@@ -265,7 +265,6 @@ class ArrayObjectIndexTree
     {
 
         foreach ($data as $key => $val) {
-
             $this->removePair($index_id, $key, $val);
         }
     }
@@ -545,11 +544,6 @@ class ArrayObjectIndexTree
                     case ConditionComparisonOperatorsEnum::NOT_EQUAL_TO:
 
                         $all_data_indexes = array_keys($this->index_tree['data_indexes']);
-
-                        #pre(array_diff_key($this->index_tree['data_indexes'], $keys[$key]['values'][$val]));
-
-                        #pr($all_data_indexes);
-                        #pre($keys[$key]['values'][$val]);
 
                         // Neither the key, nor value was found.
                         return (!isset($keys[$key]) || !isset($keys[$key]['values'][$val]))

@@ -9,5 +9,4 @@ enum ValidityEnum
     case UNDETERMINED;
     case VALID;
     case INVALID;
-
 }

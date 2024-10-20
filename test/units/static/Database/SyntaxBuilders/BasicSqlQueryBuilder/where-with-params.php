@@ -20,7 +20,7 @@ $basic_sql_query_builder = (new BasicSqlQueryBuilder($sql_server))
     ->where("`table1`.`name` = ?", params: ['foo'])
     ->where("`table1`.`key` = ?", params: [1]);
 
-[$string, $params] = $basic_sql_query_builder->getFull();
+[, $params] = $basic_sql_query_builder->getFull();
 
 Demo\assert_true(
     $params === [

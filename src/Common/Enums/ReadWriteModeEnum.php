@@ -8,5 +8,4 @@ enum ReadWriteModeEnum
 {
     case READ;
     case WRITE;
-
 }

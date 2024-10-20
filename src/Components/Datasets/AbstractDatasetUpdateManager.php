@@ -99,6 +99,15 @@ abstract class AbstractDatasetUpdateManager implements DatasetManagerInterface
         );
 
         $model = $my_data_server_context->getModel();
+        $property_collection = $model->getPropertyCollection();
+
+        /* Issue: set virtual properties as not required for update operation. Example: in Users, user_password and user_password_repeat are required in create operation, but are not required when one wants to update a few other columns. It looks like it's not possible to remove virtual properties from model, because, for instance, in Relationship Nodes relationship_type_code virtual property is used in `findMatch` operation below. */
+        foreach ($property_collection as $property) {
+            if ($dataset->containers->isVirtualContainer($property->property_name)) {
+                $property->setRelationalRequired(null);
+            }
+        }
+
         ['process' => $process, 'inherited_process' => $inherited_process] = $this->getProcess($commit);
         $update_entry_handler_class_name = $this->getUpdateEntryHandlerClassName();
         $entry_handler = new $update_entry_handler_class_name($data, $model, $this, $private_data, $process);

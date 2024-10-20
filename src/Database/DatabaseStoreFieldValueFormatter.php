@@ -7,8 +7,8 @@ namespace LWP\Database;
 use LWP\Components\Rules\FormatterInterface;
 use LWP\Components\Datasets\Interfaces\DatabaseStoreFieldValueFormatterInterface;
 use LWP\Components\Rules\FormattingRule;
-use LWP\Database\TableDatasetStoreHandle;
 use LWP\Components\Datasets\DatasetContainerGroup;
+use LWP\Database\TableDatasetStoreHandle;
 
 class DatabaseStoreFieldValueFormatter implements FormatterInterface, DatabaseStoreFieldValueFormatterInterface
 {

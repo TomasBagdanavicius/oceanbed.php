@@ -21,7 +21,10 @@ class XmlFormatter implements FormatterInterface
     public function format(array|object $value): string
     {
 
-        $result = Xml::dataToSimpleXmlElement($value, $this->formatting_rule->getRealTagnameAttrName())->asXML();
+        $result = Xml::dataToSimpleXmlElement(
+            $value,
+            $this->formatting_rule->getRealTagnameAttrName()
+        )->asXML();
 
         if (!$result) {
             throw new FormatError("Could not convert data to XML");

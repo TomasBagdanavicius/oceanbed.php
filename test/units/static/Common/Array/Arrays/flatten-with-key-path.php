@@ -40,5 +40,5 @@ Demo\assert_true(
         'part2[2][why]' => "Why it happened?",
         'part3' => "The End",
     ],
-    "This is my error message"
+    "Flattened array does not match the expected format"
 );

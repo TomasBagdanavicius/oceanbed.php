@@ -12,6 +12,7 @@ use LWP\Components\Constraints\NotInDatasetConstraint;
 use LWP\Common\Conditions\Condition;
 use LWP\Common\Conditions\ConditionGroup;
 use LWP\Common\Enums\NamedOperatorsEnum;
+use LWP\Common\Enums\ReadWriteModeEnum;
 use LWP\Components\Model\RelationalPropertyModel;
 use LWP\Components\DataTypes\Natural\Integer\IntegerDataTypeValueContainer;
 use LWP\Components\DataTypes\Natural\Integer\IntegerDataTypeValueDescriptor;
@@ -32,7 +33,7 @@ abstract class AbstractDatasetStoreHandle implements WithDefinitionArrayInterfac
     public function __construct(
         public readonly DatasetInterface $dataset,
         protected array $identifiers,
-        protected array $modifiers = []
+        protected array $modifiers = [],
     ) {
 
         $this->containers = clone $dataset->containers;
@@ -227,7 +228,7 @@ abstract class AbstractDatasetStoreHandle implements WithDefinitionArrayInterfac
     public function setupDatasetConstraintsInModel(BasePropertyModel $model)
     {
 
-        $relationship_property_names = $this->containers->getRelationshipContainers();
+        $relationship_property_names = $this->containers->getRelationshipContainers(dataset_association_type: ReadWriteModeEnum::WRITE);
 
         if ($relationship_property_names) {
 

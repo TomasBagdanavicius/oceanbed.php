@@ -12,5 +12,4 @@ enum ComparisonOperatorsEnum: string
     case GREATER_THAN = '>';
     case LESS_THAN_OR_EQUAL_TO = '<=';
     case GREATER_THAN_OR_EQUAL_TO = '>=';
-
 }

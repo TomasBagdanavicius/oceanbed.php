@@ -15,7 +15,7 @@ class RequiredDefinition extends Definition
 
 
     public function __construct(
-        bool|string|\Closure $value
+        bool|null|string|\Closure $value
     ) {
 
         parent::__construct($value);
@@ -24,7 +24,7 @@ class RequiredDefinition extends Definition
 
     //
 
-    public function setValue(bool|string|\Closure $value): void
+    public function setValue(bool|null|string|\Closure $value): void
     {
 
         $this->value = $value;

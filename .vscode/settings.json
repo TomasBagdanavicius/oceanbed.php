@@ -8,7 +8,20 @@
         "tmp/bck": true,
     },
     "[php]": {
-        "files.insertFinalNewline": true
+        "files.insertFinalNewline": true,
+        /* Fixes an issue where php-cs-fixer would stop fixing on save */
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "junstyle.php-cs-fixer",
     },
-    "php-cs-fixer.onsave": true
+    /* PHP CS Fixer */
+    "php-cs-fixer.onsave": true,
+    "php-cs-fixer.executablePath": "${workspaceFolder}/vendor/bin/php-cs-fixer",
+    /* Code Spell Checker */
+    "cSpell.userWords": [
+        "Oceanbed",
+        "Stonetable",
+        "filesystems",
+        "autoloader",
+        "autoload",
+    ],
 }

@@ -129,7 +129,7 @@ abstract class AbstractDatasetUpdateEntryHandler extends StoreEntryHandler
         $data_to_update = $this->changed_properties_data_array;
 
         foreach ($data_to_update as $property_name => $property_value) {
-            // Filters out virtual containers (note: they will remain in update model though)
+            // Filters out virtual containers
             if (!$dataset->containers->isVirtualContainer($property_name)) {
                 $data_to_update[$property_name] = $this->prepareValueForStore($property_name, $property_value);
             } else {

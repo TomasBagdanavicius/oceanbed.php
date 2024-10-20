@@ -27,12 +27,12 @@ class InSetConstraintValidator extends ConstraintValidator implements Constraint
 
         $set = $this->constraint->getSet();
 
-        if ($value instanceof StringDataTypeValueContainer) {
+        if (gettype($value) === 'object') {
             $value = $value->getValue();
         }
 
         if (
-            (is_string($value) && !in_array($value, $set))
+            ((is_string($value) || is_int($value)) && !in_array($value, $set))
             || (is_array($value) && ($missing_values = array_diff($value, $set)))
         ) {
 

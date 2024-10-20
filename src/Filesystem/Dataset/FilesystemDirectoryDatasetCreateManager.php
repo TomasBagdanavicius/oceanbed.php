@@ -4,10 +4,7 @@ declare(strict_types=1);
 
 namespace LWP\Filesystem\Dataset;
 
-use LWP\Common\Common;
 use LWP\Components\Datasets\AbstractDatasetCreateManager;
-use LWP\Components\Datasets\Enums\DatasetActionStatusEnum;
-use LWP\Components\Datasets\Exceptions\CreateEntryException;
 
 class FilesystemDirectoryDatasetCreateManager extends AbstractDatasetCreateManager
 {

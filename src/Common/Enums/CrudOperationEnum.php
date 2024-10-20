@@ -10,5 +10,4 @@ enum CrudOperationEnum: string
     case READ = 'read';
     case UPDATE = 'update';
     case DELETE = 'delete';
-
 }

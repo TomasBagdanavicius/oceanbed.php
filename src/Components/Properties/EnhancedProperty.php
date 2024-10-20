@@ -342,9 +342,11 @@ class EnhancedProperty extends BaseProperty
                     try {
 
                         $params = [
-                            $data_type_value_container
+                            $data_type_value_container,
+                            /* Note: by default, conversion will add positive validity, which might be undesired. Below, inside the "Constraints Validation" portion, it checks whether descriptor's validity is `null`. If this were to add positive validity, and there were some constraints, they would not be applied. */
+                            'add_validity' => false,
                         ];
-                        $formatting_rule_for_convert = $this->getDataTypeConvertFormattingRule();
+                        $formatting_rule_for_convert = $this->getDataTypeConvertFormattingRule(self::PHASE_PRE);
 
                         if ($formatting_rule_for_convert) {
                             $params['formatting_rule'] = $formatting_rule_for_convert;
@@ -1003,6 +1005,8 @@ class EnhancedProperty extends BaseProperty
                 return $this->pre_formatting_rules[$formatting_rule_for_convert];
             }
         }
+
+        return null;
     }
 
 

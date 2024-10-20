@@ -17,7 +17,7 @@ use LWP\Network\CurlWrapper\ResponseBuffer;
 
 $options = [
     'throw_errors' => true,
-    'on_headers' => function (ResponseBuffer $response_buffer, int $header_lines_count, int $redirections_count) {
+    'on_headers' => function (ResponseBuffer $response_buffer, int $header_lines_count, int $redirections_count): void {
 
         print "Header lines count: ";
         var_dump($header_lines_count);

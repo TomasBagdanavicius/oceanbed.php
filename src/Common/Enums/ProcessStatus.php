@@ -8,5 +8,4 @@ enum ProcessStatus
 {
     case ABORT;
     case CONTINUE;
-
 }

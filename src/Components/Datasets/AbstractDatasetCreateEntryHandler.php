@@ -221,6 +221,10 @@ abstract class AbstractDatasetCreateEntryHandler extends StoreEntryHandler
                 $create_result = $relationship_nodes_create_manager->manyFromArray($relationship_nodes_create_data, $this->process->commitment);
             }
 
+            if ($create_result['status'] === 0) {
+                throw new CreateEntryException("Late result validation errors");
+            }
+
             $this->addToResultPayload($create_result);
         }
     }

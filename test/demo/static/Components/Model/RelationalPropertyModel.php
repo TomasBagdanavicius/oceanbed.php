@@ -74,8 +74,11 @@ $definition_array = [
     'color' => [
         'type' => 'string',
         'in_set' => [
-            'white',
-            'black',
+            'set' => [
+                '1' => 'white',
+                '2' => 'black',
+            ],
+            'use_keys' => true,
         ],
         'description' => "Color parameter.",
     ],
@@ -131,7 +134,7 @@ $model->date_created = 1641024000; // Timestamp; 2022-01-01 08:00:00
 #$model->width = "90"; // As string.
 
 // Color
-$model->color = 'blue';
+$model->color = '3';
 #$model->color = 'white'; // Existing in the set.
 
 // Visible

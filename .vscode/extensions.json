@@ -8,5 +8,9 @@
         "neilbrayfield.php-docblocker",
         "bmewburn.vscode-intelephense-client",
         "junstyle.php-cs-fixer",
-    ]
+    ],
+    "unwantedRecommendations": [
+        "esbenp.prettier-vscode",
+        "dbaeumer.vscode-eslint",
+    ],
 }

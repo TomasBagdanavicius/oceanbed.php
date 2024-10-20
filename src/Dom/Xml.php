@@ -14,7 +14,7 @@ class Xml
     {
 
         $xml_data = new \SimpleXMLElement('<?xml version="1.0"?><data></data>');
-        $to_xml = function (array $data, $xml_data) use (&$to_xml): void {
+        $to_xml = function (array $data, \SimpleXMLElement $xml_data) use (&$to_xml, $real_tagname_attr_name): void {
 
             foreach ($data as $key => $value) {
 

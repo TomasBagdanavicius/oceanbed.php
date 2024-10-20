@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-include __DIR__ . '/../../../../../var/config.php';
+include __DIR__ . '/../../../../../../var/config.php';
 require_once $user_config['stonetable_path'] . '/src/web/demo-page-init.php';
 
 Demo\start();
@@ -28,30 +28,21 @@ $array = [
     'part3' => 'The End',
 ];
 
-/* Case 1: regular */
-
-$flattened_array = flattenWithKeyPath($array);
-
-print_r($flattened_array);
-
-/* Case 2: custom key */
-
-$flattened_array = flattenWithKeyPath($array, function (?string $prefix, int|string $key): string {
-
-    return (!$prefix)
-        ? $key
-        : ($prefix . '.' . $key);
-
-});
-
-print_r($flattened_array);
-
-/* Case 3: custom key */
-
-$flattened_array = flattenWithKeyPath($array, function (?string $prefix, int|string $key): string {
-
+$formatter = function (?string $prefix, int|string $key): string {
     return ((string)$prefix . '{' . $key . '}');
+};
 
-});
+$flattened_array = flattenWithKeyPath($array, $formatter);
 
-print_r($flattened_array);
+Demo\assert_true(
+    $flattened_array === [
+        '{part1}' => "Introduction",
+        '{part2}{0}' => "The Beginning",
+        '{part2}{1}' => "The Story",
+        '{part2}{2}{what}' => "What happened?",
+        '{part2}{2}{when}' => "When it happened?",
+        '{part2}{2}{why}' => "Why it happened?",
+        '{part3}' => "The End",
+    ],
+    "Flattened array does not match the expected format"
+);

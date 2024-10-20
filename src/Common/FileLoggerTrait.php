@@ -8,11 +8,11 @@ trait FileLoggerTrait
 {
     // Logs a string message
 
-    public function log(string $msg)
+    public function log(string $message): void
     {
 
-        if ($this->file_logger) {
-            $this->file_logger->logText($msg);
+        if ($this->file_logger && is_object($this->file_logger) && $this->file_logger instanceof FileLogger) {
+            $this->file_logger->logText($message);
         }
     }
 }

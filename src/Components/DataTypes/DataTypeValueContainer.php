@@ -49,9 +49,10 @@ abstract class DataTypeValueContainer
     // Expecting all data types to have parsers. When custom parser is used, this function should be created in subclass.
 
     public function getParser(): object // Can be external class object, eg. DateTime or NumberDataTypeParser, etc.
-    {if (!$this->parser) {
-        $this->parser = new (self::getGenericParserClassName())($this);
-    }
+    {
+        if (!$this->parser) {
+            $this->parser = new (self::getGenericParserClassName())($this);
+        }
 
         return $this->parser;
     }

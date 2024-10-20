@@ -90,11 +90,8 @@ class TableDatasetFetchManager extends AbstractDatasetFetchManager
 
     //
 
-    public function relationalQueryAsBasicSqlQueryBuilder(
-        AbstractDatasetSelectHandle $select_handle,
-        ?int $relationship_id = null,
-        array $join_options = []
-    ): BasicSqlQueryBuilder {
+    private function transferOptions(array $join_options): array
+    {
 
         /* Transfers `join_options`. Primarily used to join default relationship node and transfer `join_options` from config. */
         if ($this->dataset->foreign_container_collection->count() !== 0) {
@@ -108,6 +105,20 @@ class TableDatasetFetchManager extends AbstractDatasetFetchManager
                 }
             }
         }
+
+        return $join_options;
+    }
+
+
+    //
+
+    public function relationalQueryAsBasicSqlQueryBuilder(
+        AbstractDatasetSelectHandle $select_handle,
+        ?int $relationship_id = null,
+        array $join_options = []
+    ): BasicSqlQueryBuilder {
+
+        $join_options = $this->transferOptions($join_options);
 
         $fetch_query_builder = new FetchQueryBuilder(
             select_handle: $select_handle,
@@ -246,7 +257,8 @@ class TableDatasetFetchManager extends AbstractDatasetFetchManager
         AbstractDatasetSelectHandle $select_handle,
         ?EnhancedPropertyModel $action_params = null,
         ?EnhancedPropertyModel $filter_params = null,
-        ?array $basic_sql_query_builder_modifiers = null
+        ?array $basic_sql_query_builder_modifiers = null,
+        array $join_options = [],
     ): TableDatasetDataServerContext {
 
         if (!$action_params) {
@@ -298,8 +310,10 @@ class TableDatasetFetchManager extends AbstractDatasetFetchManager
         $fetch_query_builder_params = [
             'select_handle' => $select_handle,
             'model' => $model,
-            ...$params
+            ...$params,
         ];
+        $join_options = $this->transferOptions($join_options);
+        $fetch_query_builder_params['join_options'] = $join_options;
 
         $fetch_query_builder = new FetchQueryBuilder(...$fetch_query_builder_params);
         $basic_sql_query_builder = $fetch_query_builder->getAsBasicSqlQueryBuilder();
@@ -308,6 +322,10 @@ class TableDatasetFetchManager extends AbstractDatasetFetchManager
         if ($basic_sql_query_builder_modifiers) {
             Common::applyModifiers($basic_sql_query_builder, $basic_sql_query_builder_modifiers);
         }
+
+        #temp
+        #pre($basic_sql_query_builder->getFullQueryString(format: true));
+        #end temp
 
         $no_limit_count = $basic_sql_query_builder->getNoLimitCount();
         $this->validateActionParamsAfterResult($action_params, $original_offset, $no_limit_count);

@@ -33,6 +33,9 @@ $result = $create_manager->singleFromArray([
 // Commit is required for this test
 ], commit: true);
 
+# Debug
+#pre($dataset->column_array_collection->toArray());
+
 Demo\assert_true(
     // "commit" that is required for this to work is enabled
     iterator_count($dataset->byConditionObject(new Condition('name', "Tom"))) === 1,

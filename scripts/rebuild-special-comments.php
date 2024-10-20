@@ -5,8 +5,8 @@ declare(strict_types=1);
 $project_pathname = realpath(__DIR__ . '/..');
 include $project_pathname . '/var/config.php';
 
-require_once $user_paths['stonetable_path'] . '/src/lib/project-directory/Autoload.php';
-require_once $user_paths['stonetable_path'] . '/src/web/utilities.php';
+require_once $user_config['stonetable_path'] . '/src/lib/project-directory/Autoload.php';
+require_once $user_config['stonetable_path'] . '/src/web/utilities.php';
 
 use PD\ProjectFile;
 use PD\ProjectRootDirectory;
@@ -33,16 +33,12 @@ foreach ($source_file_iterator as $project_file_object) {
         $rebuild = $project_file_object->rebuildAllSpecialCommentLines();
 
         if (!$rebuild) {
-
             echo sprintf(
                 "Could not rebuild %s\n",
                 $project_file_object->getRelativePathName()
             );
-
             $rebuild_error_count++;
-
         } else {
-
             $rebuild_count++;
         }
 
@@ -73,16 +69,12 @@ foreach ($demo_file_iterator as $project_file_object) {
         $rebuild = $project_file_object->rebuildAllSpecialCommentLines();
 
         if (!$rebuild) {
-
             echo sprintf(
                 "Could not rebuild %s\n",
                 $project_file_object->getRelativePathName()
             );
-
             $rebuild_error_count++;
-
         } else {
-
             $rebuild_count++;
         }
 
@@ -113,16 +105,12 @@ foreach ($unit_file_iterator as $project_file_object) {
         $rebuild = $project_file_object->rebuildAllSpecialCommentLines();
 
         if (!$rebuild) {
-
             echo sprintf(
                 "Could not rebuild %s\n",
                 $project_file_object->getRelativePathName()
             );
-
             $rebuild_error_count++;
-
         } else {
-
             $rebuild_count++;
         }
 

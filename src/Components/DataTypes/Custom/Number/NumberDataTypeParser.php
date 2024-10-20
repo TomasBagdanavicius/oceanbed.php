@@ -271,7 +271,8 @@ class NumberDataTypeParser implements \Stringable
     //
 
     public function getFractionalPart(): ?string # Leaving string, because in the future it might supported fractional part groups.
-    {return $this->fractional_part;
+    {
+        return $this->fractional_part;
     }
 
 
